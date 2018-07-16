@@ -5,6 +5,7 @@ public class Book {
     private String author;
     private Integer publishedYear;
     private boolean isAccess;
+    private String lendByUser;
 
     public Book(String name, String author, Integer publishedYear) {
         this.name = name;
@@ -43,5 +44,13 @@ public class Book {
 
     public void setAccess(boolean access) {
         isAccess = access;
+    }
+
+    public String getLendByUser() {
+        return lendByUser;
+    }
+
+    public void setLendByUser(String lendByUser) {
+        this.lendByUser = lendByUser;
     }
 }

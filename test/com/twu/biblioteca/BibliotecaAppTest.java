@@ -38,7 +38,10 @@ public class BibliotecaAppTest {
         assertTrue(systemOut().contains("1.List Books\n" +
                 "2.Checkout Books\n" +
                 "3.Return Books\n" +
-                "4.Quit\n" +
+                "4.List Movies\n" +
+                "5.Checkout Movies\n" +
+                "6.User information\n" +
+                "7.Quit\n" +
                 "Please take a choice: "));
     }
 

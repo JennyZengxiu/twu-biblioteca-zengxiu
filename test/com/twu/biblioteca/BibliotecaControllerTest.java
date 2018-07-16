@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import com.twu.commands.InputCommand;
 import com.twu.controllers.BibliotecaController;
+import com.twu.core.Library;
 import com.twu.core.exception.OutOfRangeAnswerException;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,15 +34,29 @@ public class BibliotecaControllerTest {
     @Test
     public void should_show_message_when_checkout_a_available_book() throws IOException {
         when(inputCommand.getInputMessage()).thenReturn("Head First Java");
-        bibliotecaController.checkOutBook();
+        bibliotecaController.checkOutBook("zx");
         assertTrue(systemOut().contains("Thank you! Enjoy the book."));
     }
 
     @Test
     public void should_show_message_when_checkout_a_unavailable_book() throws IOException {
         when(inputCommand.getInputMessage()).thenReturn("Java");
-        bibliotecaController.checkOutBook();
+        bibliotecaController.checkOutBook("zx");
         assertTrue(systemOut().contains("That book is not available."));
+    }
+
+    @Test
+    public void should_show_message_when_checkout_a_available_movie() throws IOException {
+        when(inputCommand.getInputMessage()).thenReturn("Jurassic World：Fallen Kingdom");
+        bibliotecaController.checkoutMovie();
+        assertTrue(systemOut().contains("Thank you! Enjoy the movie."));
+    }
+
+    @Test
+    public void should_show_message_when_checkout_a_unavailable_movie() throws IOException {
+        when(inputCommand.getInputMessage()).thenReturn("movie");
+        bibliotecaController.checkoutMovie();
+        assertTrue(systemOut().contains("That movie is not available."));
     }
 
     @Test
@@ -68,5 +83,13 @@ public class BibliotecaControllerTest {
     public void should_show_meaasge_when_choose_quit(){
         bibliotecaController.quitMessage();
         assertTrue(systemOut().contains("see you!"));
+    }
+
+    @Test
+    public void should_show_checkout_boook_list_when_librarian_check_lend_list() throws IOException {
+        when(inputCommand.getInputMessage()).thenReturn("Head First Java");
+        bibliotecaController.checkOutBook("zx");
+        bibliotecaController.showCheckoutBookList();
+        assertTrue(systemOut().contains("Head First Java          zx"));
     }
 }
